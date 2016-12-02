@@ -1,0 +1,65 @@
+﻿@model Advent16.Models.Directions
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Easter Bunny Headquarters - Distance</title>
+</head>
+<body>
+    <h1>Directions Sequence</h1>
+    <div class="row form-group">
+        <div class="col-sm-12">
+            Input the sequence of directions instructions provided by the elves and submit to learn how far you are from Easter Bunny Headquarters!
+        </div>
+    </div>
+    @using (Html.BeginForm("GetDistance", "Day1", FormMethod.Post, new { id = "DirectionsForm" }))
+    { 
+        <div class="form-horizontal">
+            <div class="row form-group">
+                <div class="col-sm-2">
+                    @Html.LabelFor(x => x.DirectionsSequence)
+                </div>
+                <div class="col-sm-10">
+                    @Html.TextAreaFor(x => x.DirectionsSequence, new { @class = "form-control", rows = "5" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-6 pull-right">
+                    <button name="SubmitDirections" id="SubmitDirections" type="button" class="btn btn-primary">Get Distance</button>
+                    <button name="FindDuplicateDistance" id="FindDuplicateDistance" type="button" class="btn btn-default">Get Distance to First Duplicate Location</button>
+                </div>
+            </div>
+        </div>
+    }
+    <br />
+    <div class="row" id="DistanceResult">
+
+    </div>
+</body>
+</html>
+
+@section Scripts
+{
+    <script type="text/javascript">
+    $('#SubmitDirections').click(function (e) {
+        $.ajax($("#DirectionsForm").attr('action'), $("#DirectionsForm").serialize(),
+        function (result) {
+            $("#DistanceResult").html(result);
+        });
+    })
+    $('#FindDuplicateDistance').click(function (e) {
+        $.ajax({
+            url: "/Day1/GetFirstDuplicateLocationDistance",
+            data: $("#DirectionsForm").serialize(),
+            success: function (result) {
+                $("#DistanceResult").html(result);
+            }
+        });
+    })
+</script>
+}
