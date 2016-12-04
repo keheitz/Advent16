@@ -1,0 +1,13 @@
+﻿@model Advent16.Models.TriangleCount
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row text-center">
+    <h1>
+        Triangle Count For File
+    </h1>
+    <b>@Html.DisplayFor(x => x.TotalValidTriangles)</b>
+</div>
+<div class="row">
+    @Html.ActionLink("Return Home", "Index", "Home", null, new { @class = "btn btn-default" })
+</div>

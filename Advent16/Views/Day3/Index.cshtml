@@ -1,0 +1,51 @@
+﻿@model Advent16.Models.DesignDocument
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body>
+    <h1>Squares With Three Sides</h1>
+    <div class="row form-group">
+        <div class="col-sm-12">
+            Upload the design document you found listing triangle measurements. The document should be a .txt file with each set of measurements space delimited on their own line.
+        </div>
+    </div>
+    @using (Html.BeginForm("CountTriangles", "Day3", FormMethod.Post, new { enctype = "multipart/form-data", id = "TriangleForm" }))
+    {
+        <div class="form-horizontal">
+            <div class="row form-group">
+                <div class="col-sm-2">
+                    @Html.LabelFor(x => x.Part1)
+                </div>
+                <div class="col-sm-10">
+                    <div class="radio-inline">
+                        @Html.RadioButton("Part1", true) Part 1
+                    </div>
+                    <div class="radio-inline">
+                        @Html.RadioButton("Part1", false) Part 2
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-2">
+                    @Html.LabelFor(x => x.TrianglesList)
+                </div>
+                <div class="col-sm-6">
+                    @Html.TextBoxFor(x => x.TrianglesList, new { @class = "form-control", type = "file" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-6 pull-right">
+                    <button name="SubmitTriangles" id="SubmitTriangles" class="btn btn-primary">Count Valid Triangles</button>
+                </div>
+            </div>
+        </div>
+    }
+    <br />
+    <div class="row" id="TriangleCount">
+
+    </div>
+</body>
+
+
+
