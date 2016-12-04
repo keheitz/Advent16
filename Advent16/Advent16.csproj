@@ -148,12 +148,15 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Day2Controller.cs" />
     <Compile Include="Controllers\Day1Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Library\Common.cs" />
+    <Compile Include="Models\WeirdoKeypad.cs" />
+    <Compile Include="Models\Keypad.cs" />
     <Compile Include="Models\Directions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -199,6 +202,9 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Day1\Index.cshtml" />
     <Content Include="Views\Day1\Distance.cshtml" />
+    <Content Include="Views\Day2\Index.cshtml" />
+    <Content Include="Views\Day2\Code.cshtml" />
+    <Content Include="Views\Day2\WeirdoCode.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
