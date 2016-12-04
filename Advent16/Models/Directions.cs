@@ -17,6 +17,11 @@ namespace Advent16.Models
         }
     }
 
+    public class Distance
+    {
+        public int Blocks { get; set; }
+    }
+
     public class DirectionElement
     {
         public char TurnOrientation { get; set; }

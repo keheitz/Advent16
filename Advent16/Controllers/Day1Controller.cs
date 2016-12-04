@@ -1,4 +1,5 @@
-﻿using Advent16.Models;
+﻿using Advent16.Library;
+using Advent16.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,15 +8,22 @@ using System.Web.Mvc;
 
 namespace Advent16.Controllers
 {
-    /*
-     * You're airdropped near Easter Bunny Headquarters in a city somewhere. 
-     * "Near", unfortunately, is as close as you can get - 
-     * the instructions on the Easter Bunny Recruiting Document the Elves intercepted start here, 
-     * and nobody had time to work them out further.
-     * 
-     * The Document indicates that you should start at the given coordinates (where you just landed) and face North. 
-     * Then, follow the provided sequence: either turn left (L) or right (R) 90 degrees, then walk forward the given number of blocks, 
-     * ending at a new intersection.
+   /* PART ONE
+    * You're airdropped near Easter Bunny Headquarters in a city somewhere. 
+    * "Near", unfortunately, is as close as you can get - 
+    * the instructions on the Easter Bunny Recruiting Document the Elves intercepted start here, 
+    * and nobody had time to work them out further.
+    * 
+    * The Document indicates that you should start at the given coordinates (where you just landed) and face North. 
+    * Then, follow the provided sequence: either turn left (L) or right (R) 90 degrees, then walk forward the given number of blocks, 
+    * ending at a new intersection.
+    */
+
+    /* PART TWO
+     * Then, you notice the instructions continue on the back of the Recruiting Document. 
+     * Easter Bunny HQ is actually at the first location you visit twice.
+     * For example, if your instructions are R8, R4, R4, R8, the first location you visit twice is 4 blocks away, due East.
+     * How many blocks away is the first location you visit twice?
      */
 
     public class Day1Controller : Controller
@@ -26,17 +34,22 @@ namespace Advent16.Controllers
             Directions directions = new Directions();
             return View(directions);
         }
-        
+
+
+        //Solution for Part 1
         public ActionResult GetDistance(Directions directions)
         {
             List<DirectionElement> orderedDirections = ParseDirections(directions);
             List<Coordinate> journeyCoordinates = FindCoordinatePath(orderedDirections);
             Coordinate destination = journeyCoordinates.Last();
 
-            ViewBag.distance = CalculateDistance(destination); 
-            return PartialView("Distance");
+            Distance distance = new Models.Distance();
+            distance.Blocks= CalculateDistance(destination); 
+            return PartialView("Distance", distance);
         }
-        
+
+
+        //Solution for Part 2
         public ActionResult GetFirstDuplicateLocationDistance(Directions directions)
         {
             List<DirectionElement> orderedDirections = ParseDirections(directions);
@@ -44,12 +57,12 @@ namespace Advent16.Controllers
             //get ordered list of the visited coordinates
             List<Coordinate> journeyCoordinates = FindCoordinatePath(orderedDirections);
             Coordinate easterbunnyhq = FindFirstDuplicateCoordinate(journeyCoordinates);
-
-            ViewBag.distance = CalculateDistance(easterbunnyhq); 
-            return PartialView("Distance");
+            Distance distance = new Distance();
+            distance.Blocks = CalculateDistance(easterbunnyhq); 
+            return PartialView("Distance", distance);
         }
 
-        
+
 
         #region private
         //break list of steps into defined direction elements
@@ -103,7 +116,7 @@ namespace Advent16.Controllers
             foreach(Coordinate coord in journeyCoordinates)
             {
                 List<Coordinate> intersections = GetAllIntersections(processedCoords.LastOrDefault(), coord);
-                foreach(Coordinate intersection in intersections)
+                foreach (Coordinate intersection in intersections)
                 {
                     if (processedCoords.Any(x => x.xval == intersection.xval && x.yval == intersection.yval))
                     {
@@ -112,7 +125,7 @@ namespace Advent16.Controllers
                     else
                     {
 
-                        processedCoords.Add(coord);
+                        processedCoords.Add(intersection);
                     }
                 }
                 if (processedCoords.Any(x => x.xval == coord.xval && x.yval == coord.yval))
@@ -121,29 +134,20 @@ namespace Advent16.Controllers
                 }
                 else
                 {
-                    
+
                     processedCoords.Add(coord);
                 }
             }
             return easterbunnyhq;
         }
 
-        //refactor this later!!
         private List<Coordinate> GetAllIntersections(Coordinate processedCoord, Coordinate coord)
         {
             List<Coordinate> intersections = new List<Coordinate>();
             if(processedCoord.xval == coord.xval) //moving vertically
             {
-                int startval = processedCoord.yval;
-                if(processedCoord.yval > coord.yval)
-                {
-                    startval--;
-                }
-                else
-                {
-                    startval++;
-                }
-                foreach(int block in Range(startval, coord.yval))
+                int startval = SetStartVal(processedCoord.yval, coord.yval);
+                foreach(int block in Common.Range(startval, coord.yval))
                 {
                     Coordinate intersection = new Coordinate();
                     intersection.xval = coord.xval;
@@ -153,16 +157,8 @@ namespace Advent16.Controllers
             }
             else
             {
-                int startval = processedCoord.xval;
-                if (processedCoord.xval > coord.xval)
-                {
-                    startval--;
-                }
-                else
-                {
-                    startval++;
-                }
-                foreach (int block in Range(startval, coord.xval))
+                int startval = SetStartVal(processedCoord.xval, coord.xval);
+                foreach (int block in Common.Range(startval, coord.xval))
                 {
                     Coordinate intersection = new Coordinate();
                     intersection.xval = block;
@@ -174,12 +170,19 @@ namespace Advent16.Controllers
             return intersections;
         }
 
-        //Move this into common library - method for finding all numbers between two integers
-        //(similar to python Range method)
-        public static IEnumerable<int> Range(int start, int stop)
+        private int SetStartVal(int processedVal, int compareVal)
         {
-            for (int i = start; i < stop; i++)
-                yield return i;
+            int startval = processedVal;
+            if (processedVal > compareVal)
+            {
+                startval--;
+            }
+            else
+            {
+                startval++;
+            }
+
+            return startval;
         }
 
         private int CalculateDistance(Coordinate currentCoord)
@@ -246,3 +249,4 @@ namespace Advent16.Controllers
         #endregion
     }
 }
+ 

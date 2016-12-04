@@ -46,15 +46,18 @@
 @section Scripts
 {
     <script type="text/javascript">
-    $('#SubmitDirections').click(function (e) {
-        $.ajax($("#DirectionsForm").attr('action'), $("#DirectionsForm").serialize(),
-        function (result) {
-            $("#DistanceResult").html(result);
-        });
-    })
     $('#FindDuplicateDistance').click(function (e) {
         $.ajax({
             url: "/Day1/GetFirstDuplicateLocationDistance",
+            data: $("#DirectionsForm").serialize(),
+            success: function (result) {
+                $("#DistanceResult").html(result);
+            }
+        });
+    })
+    $('#SubmitDirections').click(function (e) {
+        $.ajax({
+            url: "/Day1/GetDistance",
             data: $("#DirectionsForm").serialize(),
             success: function (result) {
                 $("#DistanceResult").html(result);
