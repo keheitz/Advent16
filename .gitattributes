@@ -1,1 +1,2 @@
-".rb linguist-languages=C#" 
+Content/* linguist-vendored
+Scripts/* linguist-vendored
