@@ -41,6 +41,7 @@
         $('#SubmitProcedure').click(function (e) {
             $.ajax({
                 url: "@Url.Action("GetCode", "Day2")",
+                type: "POST",
                 data: $("#ProcedureForm").serialize(),
                 success: function (result) {
                     $("#Code").html(result);
@@ -49,9 +50,9 @@
         })
 
         $('#WeirdCode').click(function (e) {
-            var form = $('#ProcedureForm').serialize();
             $.ajax({
-                url: "@Url.Action("GetCode", "Day2")",
+                url: "@Url.Action("GetWeirdCode", "Day2")",
+                type: "POST",
                 data: $("#ProcedureForm").serialize(),
                 success: function (result) {
                     $("#Code").html(result);

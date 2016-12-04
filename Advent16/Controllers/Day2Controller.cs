@@ -39,7 +39,7 @@ namespace Advent16.Controllers
         //TODO:I think I could use same models for both, if I pass in keypad layout and use chars (as in WeirdoKeypad)
         //refactor so there is less logical duplication - but right now I'm behind on puzzles!
 
-        [HttpGet]
+        [HttpPost]
         public ActionResult GetCode(CodeInstructions procedure)
         {
             BathroomCode input = new BathroomCode();
@@ -64,6 +64,7 @@ namespace Advent16.Controllers
             return PartialView("Code", input);
         }
 
+        [HttpPost]
         public ActionResult GetWeirdCode(CodeInstructions procedure)
         {
             WeirdoBathroomCode input = new WeirdoBathroomCode();
