@@ -1,0 +1,47 @@
+﻿@model Advent16.Models.RoomListDocument
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body>
+    <h1>Security Through Obscurity</h1>
+    <div class="row form-group">
+        <div class="col-sm-12">
+            Upload the list of rooms from the information kiosk. 
+        </div>
+    </div>
+    @using (Html.BeginForm("SumSectors", "Day4", FormMethod.Post, new { enctype = "multipart/form-data", id = "RoomForm" }))
+    {
+        <div class="form-horizontal">
+            <div class="row form-group">
+                <div class="col-sm-2">
+                    @Html.LabelFor(x => x.Part1)
+                </div>
+                <div class="col-sm-10">
+                    <div class="radio-inline">
+                        @Html.RadioButton("Part1", true) Part 1
+                    </div>
+                    <div class="radio-inline">
+                        @Html.RadioButton("Part1", false) Part 2
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-2">
+                    @Html.LabelFor(x => x.RoomList)
+                </div>
+                <div class="col-sm-6">
+                    @Html.TextBoxFor(x => x.RoomList, new { @class = "form-control", type = "file" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-6 pull-right">
+                    <button name="SubmitRoomList" id="SubmitRoomList" class="btn btn-primary">Sum Sector IDs for Valid Rooms</button>
+                </div>
+            </div>
+        </div>
+    }
+</body>
+
+
+

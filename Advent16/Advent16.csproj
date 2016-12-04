@@ -151,11 +151,13 @@
     <Compile Include="Controllers\Day2Controller.cs" />
     <Compile Include="Controllers\Day1Controller.cs" />
     <Compile Include="Controllers\Day3Controller.cs" />
+    <Compile Include="Controllers\Day4Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Library\Common.cs" />
+    <Compile Include="Models\RoomNames.cs" />
     <Compile Include="Models\Triangle.cs" />
     <Compile Include="Models\WeirdoKeypad.cs" />
     <Compile Include="Models\Keypad.cs" />
@@ -210,10 +212,11 @@
     <Content Include="Views\Day2\WeirdoCode.cshtml" />
     <Content Include="Views\Day3\Index.cshtml" />
     <Content Include="Views\Day3\TriangleCount.cshtml" />
+    <Content Include="Views\Day4\SectorsSum.cshtml" />
+    <Content Include="Views\Day4\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />
-    <Folder Include="Views\Day4\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
