@@ -1,0 +1,65 @@
+﻿@model Advent16.Models.DoorInput
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<body>
+    <h1>Bathroom Security</h1>
+    <div class="row form-group">
+        <div class="col-sm-12">
+            Input door id below to obtain the password for accessing the room.
+        </div>
+    </div>
+    @using (Html.BeginForm("GetPassword", "Day5", FormMethod.Post, new { id = "DoorIDForm" }))
+    {
+        <div class="form-horizontal">
+            <div class="row form-group">
+                <div class="col-sm-2">
+                    @Html.LabelFor(x => x.DoorID)
+                </div>
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(x => x.DoorID, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-6 pull-right">
+                    <button name="SubmitDoorID" id="SubmitDoorID" type="button" class="btn btn-primary">Get Password - Door 1</button>
+                    <button name="SubmitSecondDoorID" id="SubmitSecondDoorID" type="button" class="btn btn-primary">Get Password - Door 2</button>
+                </div>
+            </div>
+        </div>
+    }
+    <br />
+    <div class="row" id="Password">
+
+    </div>
+</body>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $('#SubmitDoorID').click(function (e) {
+            $.ajax({
+                url: "@Url.Action("GetPassword", "Day5")",
+                type: "POST",
+                data: $("#DoorIDForm").serialize(),
+                success: function (result) {
+                    $("#Password").html(result);
+                }
+            });
+        })
+
+        $('#SubmitSecondDoorID').click(function (e) {
+            $.ajax({
+                url: "@Url.Action("GetSecondPassword", "Day5")",
+                type: "POST",
+                data: $("#DoorIDForm").serialize(),
+                success: function (result) {
+                    $("#Password").html(result);
+                }
+            });
+        })
+    </script>
+}
+
+

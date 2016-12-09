@@ -65,7 +65,7 @@ namespace Advent16.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetWeirdCode(CodeInstructions procedure)
+        public ActionResult GetWeirdoCode(CodeInstructions procedure)
         {
             WeirdoBathroomCode input = new WeirdoBathroomCode();
             var reader = new StringReader(procedure.Instructions);
@@ -75,11 +75,9 @@ namespace Advent16.Controllers
             while (null != (line = reader.ReadLine()))
             {
                 char[] array = line.ToCharArray();
-
-                // Loop through array.
+                
                 for (int i = 0; i < array.Length; i++)
                 {
-                    // Get character from array.
                     char letter = array[i];
                     IMoveWeird mover = WeirdMoverFactory.GetMover(letter);
                     keypad.Move(mover);
