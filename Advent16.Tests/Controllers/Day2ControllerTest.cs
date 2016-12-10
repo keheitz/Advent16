@@ -17,7 +17,7 @@ namespace Advent16.Tests.Controllers
         public void Index()
         {
             // Arrange
-            HomeController controller = new HomeController();
+            Day2Controller controller = new Day2Controller();
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
@@ -53,15 +53,15 @@ namespace Advent16.Tests.Controllers
             Models.CodeInstructions instructions = new Models.CodeInstructions();
             instructions.Instructions = "ULL";
             // Act
-            ActionResult result = controller.GetWeirdCode(instructions);
+            ActionResult result = controller.GetWeirdoCode(instructions);
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(PartialViewResult));
             PartialViewResult viewResult = (PartialViewResult)result;
 
-            Assert.IsInstanceOfType(viewResult.Model, typeof(Models.BathroomCode));
+            Assert.IsInstanceOfType(viewResult.Model, typeof(Models.WeirdoBathroomCode));
             Models.WeirdoBathroomCode model = (Models.WeirdoBathroomCode)viewResult.Model;
-            Assert.AreEqual('A', model.Code.First());
+            Assert.AreEqual('5', model.Code.First());
         }
     }
 }

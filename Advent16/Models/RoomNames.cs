@@ -142,17 +142,4 @@ namespace Advent16.Models
         }
             
     }
-
-    static class CircularLinkedList
-    {
-        public static LinkedListNode<T> NextOrFirst<T>(LinkedListNode<T> current)
-        {
-            return current.Next ?? current.List.First;
-        }
-
-        public static LinkedListNode<T> PreviousOrLast<T>(LinkedListNode<T> current)
-        {
-            return current.Previous ?? current.List.Last;
-        }
-    }
 }

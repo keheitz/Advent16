@@ -2,24 +2,21 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Advent16.Tests.Controllers
 {
     [TestClass]
-    public class Day3ControllerTest
+    public class Day4ControllerTest
     {
         [TestMethod]
         public void Index()
         {
             // Arrange
-            Day3Controller controller = new Day3Controller();
+            Day4Controller controller = new Day4Controller();
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
@@ -28,30 +25,30 @@ namespace Advent16.Tests.Controllers
             Assert.IsNotNull(result);
         }
 
-        //Testing model
-        //couldn't figure out how to test the action result with httppostedfilebase
+        //Testing models, bc can't figure out how to test method with httppostedfilebase
 
         [TestMethod]
-        public void InvalidTriangle()
+        public void RoomName()
         {
             //arrange
-            List<int> measurements = new List<int> { 5, 10, 25 };
-            var model = new Models.Triangle(measurements);
-           
+            var model = new Models.RoomName("aaaaa-bbb-z-y-x-123[abxyz]");
+
             //assert
-            Assert.AreEqual(false, model.ValidTriangle);
+            Assert.AreEqual("abxyz", model.Checksum);
+            Assert.AreEqual(123, model.SectorID);
+            Assert.AreEqual(false, model.DecoyRoom);
+            Assert.AreEqual("aaaaa-bbb-z-y-x", model.EncryptedRoomName);
         }
 
         [TestMethod]
-        public void Triangle()
+        public void Decoder()
         {
             //arrange
-            List<int> measurements = new List<int> { 7, 10, 5 };
-            var model = new Models.Triangle(measurements);
+            var model = new Models.Decoder();
 
             //assert
-            Assert.AreEqual(true, model.ValidTriangle);
+            char letter = model.FindDecodedLetter('q', 343);
+            Assert.AreEqual('v', letter);
         }
-
     }
 }

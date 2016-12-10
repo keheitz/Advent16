@@ -9,15 +9,6 @@ using Advent16.Library;
 
 namespace Advent16.Controllers
 {
-    /* PART ONE
-     * Now that you can think clearly, you move deeper into the labyrinth of hallways and office furniture that makes up this part of Easter Bunny HQ. 
-     * This must be a graphic design department; the walls are covered in specifications for triangles.
-     * 
-     * Or are they?
-     * 
-     * Some of these aren't triangles. You can't help but mark the impossible ones.
-     * In your puzzle input, how many of the listed triangles are possible?
-     */
 
     public class Day3Controller : Controller
     {
