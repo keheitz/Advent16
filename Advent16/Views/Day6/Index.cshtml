@@ -1,0 +1,63 @@
+﻿@model Advent16.Models.SantaComm
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<body>
+    <h1>Signals and Noise</h1>
+    <div class="row form-group">
+        <div class="col-sm-12">
+            Input the repeating message signals from santa, space-separated, to find the correct communication.
+        </div>
+    </div>
+    @using (Html.BeginForm("GetCorrectedComm", "Day6", FormMethod.Post, new { id = "SantaComm" }))
+    { 
+        <div class="form-horizontal">
+            <div class="row form-group">
+                <div class="col-sm-2">
+                    @Html.LabelFor(x => x.Message)
+                </div>
+                <div class="col-sm-10">
+                    @Html.TextAreaFor(x => x.Message, new { @class = "form-control", rows = "5" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-6 pull-right">
+                    <button name="SubmitComm" id="SubmitComm" type="button" class="btn btn-primary">Repetition Code</button>
+                    <button name="SubmitModified" id="SubmitModified" type="button" class="btn btn-default">Modified Repetition Code</button>
+                </div>
+            </div>
+        </div>
+    }
+    <br />
+    <div class="row" id="MessageResult">
+
+    </div>
+</body>
+
+@section Scripts
+{
+    <script type="text/javascript">
+    $('#SubmitComm').click(function (e) {
+        $.ajax({
+            url: "@Url.Action("GetCorrectedComm", "Day6")",
+            type: "POST",
+            data: $("#SantaComm").serialize(),
+            success: function (result) {
+                $("#MessageResult").html(result);
+            }
+        });
+    })
+    $('#SubmitModified').click(function (e) {
+        $.ajax({
+            url: "@Url.Action("DecodeModifiedRepetition", "Day6")",
+            type: "POST",
+             data: $("#SantaComm").serialize(),
+            success: function (result) {
+            $("#MessageResult").html(result);
+        }
+        });
+    })
+</script>
+}

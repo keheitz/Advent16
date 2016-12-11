@@ -82,10 +82,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\Day5ControllerTest.cs" />
     <Compile Include="Controllers\Day2ControllerTest.cs" />
     <Compile Include="Controllers\Day1ControllerTest.cs" />
     <Compile Include="Controllers\Day4ControllerTest.cs" />
     <Compile Include="Controllers\Day3ControllerTest.cs" />
+    <Compile Include="Controllers\Day6ControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
