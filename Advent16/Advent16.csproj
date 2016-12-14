@@ -163,6 +163,7 @@
     <Compile Include="Controllers\Day4Controller.cs" />
     <Compile Include="Controllers\Day6Controller.cs" />
     <Compile Include="Controllers\Day5Controller.cs" />
+    <Compile Include="Controllers\Day7Controller.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -170,6 +171,7 @@
     <Compile Include="Library\Common.cs" />
     <Compile Include="Models\DoorPassword.cs" />
     <Compile Include="Models\RoomNames.cs" />
+    <Compile Include="Models\IPAddress.cs" />
     <Compile Include="Models\SignalsAndNoise.cs" />
     <Compile Include="Models\Triangle.cs" />
     <Compile Include="Models\WeirdoKeypad.cs" />
@@ -231,6 +233,8 @@
     <Content Include="Views\Day5\Password.cshtml" />
     <Content Include="Views\Day6\Index.cshtml" />
     <Content Include="Views\Day6\Message.cshtml" />
+    <Content Include="Views\Day7\Count.cshtml" />
+    <Content Include="Views\Day7\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\uploads\" />

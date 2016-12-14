@@ -1,0 +1,63 @@
+﻿@model Advent16.Models.IPAddressesInput
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<body>
+    <h1>Internet Protocol Version 7</h1>
+    <div class="row form-group">
+        <div class="col-sm-12">
+            Input the list of IP Addresses, space-separated, to find the count of addresses that support TLS.
+        </div>
+    </div>
+    @using (Html.BeginForm("CountIPs", "Day7", FormMethod.Post, new { id = "IPaddresses" }))
+    { 
+        <div class="form-horizontal">
+            <div class="row form-group">
+                <div class="col-sm-2">
+                    @Html.LabelFor(x => x.Addresses)
+                </div>
+                <div class="col-sm-10">
+                    @Html.TextAreaFor(x => x.Addresses, new { @class = "form-control", rows = "5" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-6 pull-right">
+                    <button name="addressesTLS" id="addressesTLS" type="button" class="btn btn-primary">Get TLS Count</button>
+                    <button name="addressesSSL" id="addressesSSL" type="button" class="btn btn-default">Get SSL Count</button>
+                </div>
+            </div>
+        </div>
+    }
+    <br />
+    <div class="row" id="AddressCount">
+
+    </div>
+</body>
+
+@section Scripts
+{
+    <script type="text/javascript">
+   $('#addressesTLS').click(function (e) {
+        $.ajax({
+            url: "@Url.Action("CountTLSAddresses", "Day7")",
+            type: "POST",
+            data: $("#IPaddresses").serialize(),
+            success: function (result) {
+                $("#AddressCount").html(result);
+            }
+        });
+    })
+        $('#addressesSSL').click(function (e) {
+        $.ajax({
+            url: "@Url.Action("CountSSLAddresses", "Day7")",
+            type: "POST",
+            data: $("#IPaddresses").serialize(),
+            success: function (result) {
+                $("#AddressCount").html(result);
+        }
+        });
+    })
+</script>
+}

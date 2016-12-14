@@ -11,7 +11,7 @@
             Input the repeating message signals from santa, space-separated, to find the correct communication.
         </div>
     </div>
-    @using (Html.BeginForm("GetCorrectedComm", "Day6", FormMethod.Post, new { id = "SantaComm" }))
+    @using (Html.BeginForm("DecodeRepetition", "Day6", FormMethod.Post, new { id = "SantaComm" }))
     { 
         <div class="form-horizontal">
             <div class="row form-group">
@@ -41,7 +41,7 @@
     <script type="text/javascript">
     $('#SubmitComm').click(function (e) {
         $.ajax({
-            url: "@Url.Action("GetCorrectedComm", "Day6")",
+            url: "@Url.Action("DecodeRepetition", "Day6")",
             type: "POST",
             data: $("#SantaComm").serialize(),
             success: function (result) {

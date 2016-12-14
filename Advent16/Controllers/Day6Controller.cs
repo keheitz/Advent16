@@ -18,7 +18,7 @@ namespace Advent16.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetCorrectedComm(SantaComm comm)
+        public ActionResult DecodeRepetition(SantaComm comm)
         {
             StringBuilder msg = new StringBuilder();
             for (int i = 0; i < comm.RepetitionCode.First().Length; i++)
