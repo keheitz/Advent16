@@ -87,9 +87,9 @@ namespace Advent16.Controllers
                 string[] measurements = line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries); //remove emptry entries to account for varying spaces
 
                 List<int> m = new List<int>();
-                m.Add(Int32.Parse(measurements[0]));
-                m.Add(Int32.Parse(measurements[1]));
-                m.Add(Int32.Parse(measurements[2]));
+                m.Add(int.Parse(measurements[0]));
+                m.Add(int.Parse(measurements[1]));
+                m.Add(int.Parse(measurements[2]));
 
                 Triangle triangle = new Triangle(m);
                 triangleSpecs.Add(triangle);

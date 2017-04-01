@@ -84,7 +84,7 @@ namespace Advent16.Models
         {
             Checksum = room.Split('[', ']')[1];
             
-            SectorID = Int32.Parse(Regex.Match(room, @"\d+").Value); //regex to pull numbers - all integers in string belong to sector id
+            SectorID = int.Parse(Regex.Match(room, @"\d+").Value); //regex to pull numbers - all integers in string belong to sector id
 
             EncryptedRoomName = room.Substring(0, room.LastIndexOf("-"));
         }

@@ -15,6 +15,7 @@ C:\Users\Kelly\Advent16\Advent16\bin\Advent16.dll.config
 C:\Users\Kelly\Advent16\Advent16\bin\Advent16.dll
 C:\Users\Kelly\Advent16\Advent16\bin\Advent16.pdb
 C:\Users\Kelly\Advent16\Advent16\bin\Antlr3.Runtime.dll
+C:\Users\Kelly\Advent16\Advent16\bin\Castle.Core.dll
 C:\Users\Kelly\Advent16\Advent16\bin\Microsoft.AI.Agent.Intercept.dll
 C:\Users\Kelly\Advent16\Advent16\bin\Microsoft.AI.DependencyCollector.dll
 C:\Users\Kelly\Advent16\Advent16\bin\Microsoft.AI.PerfCounterCollector.dll
@@ -23,7 +24,9 @@ C:\Users\Kelly\Advent16\Advent16\bin\Microsoft.AI.Web.dll
 C:\Users\Kelly\Advent16\Advent16\bin\Microsoft.AI.WindowsServer.dll
 C:\Users\Kelly\Advent16\Advent16\bin\Microsoft.ApplicationInsights.dll
 C:\Users\Kelly\Advent16\Advent16\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Kelly\Advent16\Advent16\bin\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
 C:\Users\Kelly\Advent16\Advent16\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Kelly\Advent16\Advent16\bin\Moq.dll
 C:\Users\Kelly\Advent16\Advent16\bin\Newtonsoft.Json.dll
 C:\Users\Kelly\Advent16\Advent16\bin\System.Web.Helpers.dll
 C:\Users\Kelly\Advent16\Advent16\bin\System.Web.Mvc.dll
@@ -33,12 +36,14 @@ C:\Users\Kelly\Advent16\Advent16\bin\System.Web.WebPages.Deployment.dll
 C:\Users\Kelly\Advent16\Advent16\bin\System.Web.WebPages.dll
 C:\Users\Kelly\Advent16\Advent16\bin\System.Web.WebPages.Razor.dll
 C:\Users\Kelly\Advent16\Advent16\bin\WebGrease.dll
+C:\Users\Kelly\Advent16\Advent16\bin\Castle.Core.xml
 C:\Users\Kelly\Advent16\Advent16\bin\Microsoft.AI.DependencyCollector.xml
 C:\Users\Kelly\Advent16\Advent16\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\Kelly\Advent16\Advent16\bin\Microsoft.AI.Web.xml
 C:\Users\Kelly\Advent16\Advent16\bin\Microsoft.AI.WindowsServer.xml
 C:\Users\Kelly\Advent16\Advent16\bin\Microsoft.ApplicationInsights.xml
 C:\Users\Kelly\Advent16\Advent16\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Kelly\Advent16\Advent16\bin\Moq.xml
 C:\Users\Kelly\Advent16\Advent16\bin\System.Web.Helpers.xml
 C:\Users\Kelly\Advent16\Advent16\bin\System.Web.Mvc.xml
 C:\Users\Kelly\Advent16\Advent16\bin\System.Web.Optimization.xml
@@ -51,8 +56,3 @@ C:\Users\Kelly\Advent16\Advent16\bin\Newtonsoft.Json.xml
 C:\Users\Kelly\Advent16\Advent16\obj\Debug\Advent16.dll
 C:\Users\Kelly\Advent16\Advent16\obj\Debug\Advent16.pdb
 C:\Users\Kelly\Advent16\Advent16\obj\Debug\Advent16.csprojResolveAssemblyReference.cache
-C:\Users\Kelly\Advent16\Advent16\bin\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
-C:\Users\Kelly\Advent16\Advent16\bin\Castle.Core.dll
-C:\Users\Kelly\Advent16\Advent16\bin\Moq.dll
-C:\Users\Kelly\Advent16\Advent16\bin\Castle.Core.xml
-C:\Users\Kelly\Advent16\Advent16\bin\Moq.xml

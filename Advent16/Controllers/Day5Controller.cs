@@ -47,7 +47,7 @@ namespace Advent16.Controllers
                 if (hash.Substring(0, 5) == "00000")
                 {
                     int hashIndex;
-                    if(Int32.TryParse(hash[5].ToString(), out hashIndex))
+                    if(int.TryParse(hash[5].ToString(), out hashIndex))
                     {
                         if(hashIndex < 8 && password[hashIndex] == '-')
                         {

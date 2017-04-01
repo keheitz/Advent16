@@ -1,0 +1,39 @@
+﻿@model Advent16.Models.FinalDisplay
+<style>
+    .box {
+
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    margin:1px;
+    }
+
+    div.box.lit {
+    background-color: greenyellow;
+    }
+
+    div.box.off {
+    background-color: black;
+    }
+</style>
+
+<div class="row text-center">
+    @Html.DisplayFor(x => x.LitPixelCount)
+</div>
+
+@foreach(string line in Model.ScreenDisplay)
+{
+    <div class="row content">
+            @foreach (char c in line)
+            {
+                if(c == '%') 
+                {
+                    <div class="box lit"></div>
+                }
+                else
+                {
+                    <div class="box off"></div>
+                }
+            }
+    </div>
+}

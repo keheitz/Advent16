@@ -1,0 +1,63 @@
+﻿@model Advent16.Models.EncodedInstructions
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<body>
+    <h1>Two-Factor Authentication</h1>
+    <div class="row form-group">
+        <div class="col-sm-12">
+            Input the list of screen instructions, with each step separated by '&', to find the count of lit pixels and see what the screen should display.
+        </div>
+    </div>
+    @using (Html.BeginForm("CountLitPixels", "Day8", FormMethod.Post, new { id = "InputForm" }))
+    { 
+        <div class="form-horizontal">
+            <div class="row form-group">
+                <div class="col-sm-2">
+                    @Html.LabelFor(x => x.Input)
+                </div>
+                <div class="col-sm-10">
+                    @Html.TextAreaFor(x => x.Input, new { @class = "form-control", rows = "5" })
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-sm-6 pull-right">
+                    <button name="count" id="displayScreen" type="button" class="btn btn-primary">Display Screen</button>
+                </div>
+            </div>
+        </div>
+    }
+    <br />
+    <div class="row" id="ScreenDisplay">
+
+    </div>
+</body>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $('#displayScreen').click(function (e) {
+            alert($("#InputForm").serialize());
+            $.ajax({
+                url: "@Url.Action("DisplayScreen", "Day8")",
+                type: "POST",
+                data: $("#InputForm").serialize(),
+                success: function (result) {
+                    $("#ScreenDisplay").html(result);
+                }
+            });
+        });
+        @*$('#addressesSSL').click(function (e) {
+            $.ajax({
+                url: "@Url.Action("CountSSLAddresses", "Day7")",
+                type: "POST",
+                data: $("#IPaddresses").serialize(),
+                success: function (result) {
+                    $("#AddressCount").html(result);
+                }
+            });
+        });*@
+</script>
+}
