@@ -10,14 +10,14 @@ namespace Advent16.Controllers
 {
     public class Day8Controller : Controller
     {
-        // GET: Day7
+        // GET: Day8
         public ActionResult Index()
         {
             EncodedInstructions instructions = new EncodedInstructions();
             return View(instructions);
         }
 
-        [HttpPost]
+        [HttpPost] //shows the number of lit pixels, along with the actual screen display for part 2
         public ActionResult DisplayScreen(EncodedInstructions instructions)
         {
             instructions.Input = HttpUtility.UrlDecode(instructions.Input);
@@ -28,19 +28,7 @@ namespace Advent16.Controllers
             }
 
             FinalDisplay display = new FinalDisplay(screen.Pixels);
-            
             return PartialView("Display", display);
         }
-
-        //[HttpPost]
-        //public ActionResult CountSSLAddresses(IPAddressesInput input)
-        //{
-        //    List<string> addresses = input.Addresses.Split(' ').ToList();
-        //    List<IPAddress> formattedAddresses = addresses.Select(x => new IPAddress(x)).ToList();
-        //    CountIP count = new CountIP();
-        //    count.AddressCount = formattedAddresses.Where(x => x.SupportsSSL == true).Count();
-
-        //    return PartialView("Count", count);
-        //}
     }
 }
